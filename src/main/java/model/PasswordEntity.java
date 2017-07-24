@@ -16,6 +16,8 @@ public class PasswordEntity {
     @Column(name = "id")
     private Integer id;
 
+
+
     @Column(name = "password")
     private String password;
 
@@ -29,6 +31,14 @@ public class PasswordEntity {
     }
 
     public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public PasswordEntity(){
+
+    }
+
+    public PasswordEntity(String password) {
         this.password = password;
     }
 
