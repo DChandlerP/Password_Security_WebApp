@@ -1,37 +1,25 @@
 package helper;
 
-import model.PasswordEntity;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created by davidprince on 7/24/17.
  */
 public class PasswordsPersistent {
-    public void main(){
-        Session session = SessionFactory.openSession();
 
-        Transaction tx = session.beginTransaction();
-
-        String[] passwordArray = TxtToArray();
-
-        for(int i=0; i < passwordArray.length; i++){
-
-            String password = passwordArray[i];
-
-            PasswordEntity passEntity = new PasswordEntity(password);
-
-                    session.save(passEntity);
-
-            if (i % 20 == 0) {
-
-                session.flush();
-
-                session.clear();
-
-            }
+    private List loadData(){
+        List<String> list = null;
+        try {
+            list = Files.readAllLines(Paths.get("/Users/davidprince/Desktop/Password Security WebApp/Password Security WebApp/src/main/java/helper/passwords.txt"), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
+        return list;
     }
 }
