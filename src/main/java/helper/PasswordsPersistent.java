@@ -31,4 +31,9 @@ public class PasswordsPersistent {
     private void exportsToDB() {
         passwordDAO.save(loadData());
     }
+
+    public static void main (String[] args){
+        PasswordsPersistent pp = new PasswordsPersistent();
+        pp.exportsToDB();
+    }
 }
