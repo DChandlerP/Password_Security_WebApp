@@ -16,11 +16,8 @@ public class PasswordEntity {
     @Column(name = "id")
     private Integer id;
 
-
-
     @Column(name = "password")
     private String password;
-
 
     public Integer getId() {
         return id;

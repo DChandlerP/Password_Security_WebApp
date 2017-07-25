@@ -1,6 +1,8 @@
 package helper;
 
 
+import model.data.PasswordDAO;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,6 +14,8 @@ import java.util.List;
  */
 public class PasswordsPersistent {
 
+    private PasswordDAO passwordDAO;
+
     private List loadData(){
         List<String> list = null;
         try {
@@ -20,6 +24,11 @@ public class PasswordsPersistent {
             e.printStackTrace();
 
         }
+
         return list;
+    }
+
+    private void exportsToDB() {
+        passwordDAO.save(loadData());
     }
 }
